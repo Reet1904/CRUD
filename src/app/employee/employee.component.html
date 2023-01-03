@@ -1,0 +1,62 @@
+<div>
+<form [formGroup]="employeeform">
+    <div class="row">
+        <div class="col-md-6">
+            <input type="text" class="form-control" formControlName="fname" placeholder="firstName" aria-label="firstName" aria-describedby="basic-addon1" [pattern]="namepattern" [(ngModel)]="obj.firstName">
+            <div style="color: red;" *ngIf="employeeform.controls['fname'].touched && employeeform.controls['fname'].invalid">
+                <span *ngIf="employeeform.controls['fname'].hasError('required')">name is required</span>
+                <span *ngIf="employeeform.controls['fname'].hasError('pattern')">only alphabate with
+                    space between 2 to 20 characterrs
+                </span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <input type="text" class="form-control" formControlName="lname" placeholder="lastName" aria-label="lastName" aria-describedby="basic-addon1" [(ngModel)]="obj.lastName">
+            <div style="color: red;" *ngIf="employeeform.controls['lname'].touched && employeeform.controls['lname'].invalid">
+                <span *ngIf="employeeform.controls['lname'].hasError('required')">name is required</span>
+                <span *ngIf="employeeform.controls['lname'].hasError('pattern')">only alphabate with
+                    space between 2 to 20 characterrs
+                </span>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-6">
+            <input type="text" class="form-control" formControlName="empId" placeholder="employee Id" aria-label="Emp Id" aria-describedby="basic-addon1" [(ngModel)]="obj.id" required>
+            <div style="color: red;" *ngIf="employeeform.controls['empId'].touched && employeeform.controls['empId'].invalid">
+                <span *ngIf="employeeform.controls['empId'].hasError('required')">empId is required</span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <input type="text" class="form-control" formControlName="gender" placeholder="gender" aria-label="gender" aria-describedby="basic-addon1"  [(ngModel)]="obj.gender" required>
+            <div style="color: red;" *ngIf="employeeform.controls['gender'].touched && employeeform.controls['gender'].invalid">
+                <span *ngIf="employeeform.controls['gender'].hasError('required')">gender is required</span>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-12">
+            <input type="email" class="form-control" formControlName="email" placeholder="emailId" aria-label="emailId" aria-describedby="basic-addon2" [(ngModel)]="obj.emailId" required [pattern]="emailpattern"  >
+            <div style="color: red;" *ngIf="employeeform.controls['email'].touched && employeeform.controls['email'].invalid">
+                <span *ngIf="employeeform.controls['email'].hasError('required')">email is required</span>
+                <span *ngIf="employeeform.controls['email'].hasError('pattern')">inavlid email</span>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-12">
+            <input type="number" class="form-control" formControlName="phoneno" placeholder="phoneNumber" aria-label="phoneNumber" aria-describedby="basic-addon2" [(ngModel)]="obj.phoneNumber" required>
+            <div style="color: red;" *ngIf="employeeform.controls['phoneno'].touched && employeeform.controls['phoneno'].invalid">
+                <span *ngIf="employeeform.controls['phoneno'].hasError('required')">mobile no is required</span>
+                <span *ngIf="employeeform.controls['phoneno'].getError?.length">use 10 digit mob no</span>
+            </div>
+        </div>
+    </div>
+    <br>
+    <button type="button" class="button btn-primary btn-block" (click)="onSubmit(obj)">Submit</button>
+    <button type="button" class="button1 btn-info btn-block" (click)="onReset()">Reset</button>
+</form>
+</div>
